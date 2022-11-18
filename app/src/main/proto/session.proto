@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "be.mathias.sessiondemo.proto";
+option java_outer_classname = "SessionProto";
+
+import "google/protobuf/timestamp.proto";
+
+message IEnumerable_Index {
+  repeated Index items = 1;
+}
+message Index {
+  int32 Id = 1;
+  google.protobuf.Timestamp StartDate = 2;
+  .google.protobuf.Timestamp EndDate = 3;
+  int32 SpotsLeft = 4;
+  string SessionType = 5;
+  string Trainer = 6;
+}
+service SessionService {
+  rpc GetAllSessions (Index) returns (IEnumerable_Index);
+}
